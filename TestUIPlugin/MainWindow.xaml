@@ -1,0 +1,50 @@
+﻿<Window x:Class="TestUIPlugin.MainWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="clr-namespace:AutoCAD_2022_Plugin1.ViewModels.ManageVM"
+             xmlns:views="clr-namespace:AutoCAD_2022_Plugin1.Views.ManageViews"
+             xmlns:mainViewModels="clr-namespace:AutoCAD_2022_Plugin1.ViewModels"
+             xmlns:services="clr-namespace:AutoCAD_2022_Plugin1.Services"
+             d:DataContext="{d:DesignInstance Type=viewmodels:MainManageVM}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Window.Resources>
+        <DataTemplate x:Key="MyTabHeaderTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding Header}" Width="80" Height="25" FontWeight="Bold"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="LayoutTemplate">
+            <views:ManageLayoutView DataContext="{Binding VM}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ViewportTemplate">
+            <views:ManageViewportView DataContext="{Binding VM}"/>
+        </DataTemplate>
+
+        <services:MyViewSelector x:Key="Selector" 
+                                LayoutTemplate="{StaticResource LayoutTemplate}" 
+                                ViewportTemplate="{StaticResource ViewportTemplate}"/>
+    </Window.Resources>
+
+    <StackPanel>
+        <TabControl Name="TABCONT" Margin="2" MinHeight="50" MinWidth="100" 
+                    ItemsSource="{Binding tabs}"
+                    ItemTemplate="{StaticResource MyTabHeaderTemplate}"
+                    ContentTemplateSelector="{StaticResource Selector}">
+        </TabControl>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Margin="2" Name="btn_Cancel" IsDefault="True" 
+                    Click="CancelCommand"  Content="Отмена"/>
+
+        </StackPanel>
+
+    </StackPanel>
+</Window>
+
