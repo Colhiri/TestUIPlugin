@@ -37,16 +37,17 @@ namespace AutoCAD_2022_Plugin1.ViewModels.ManageVM
             }
         }
 
-        private RelayCommand _CloseWindow;
-        public RelayCommand CloseWindow
+        private void ActionTest() { }
+        private RelayCommand _Test;
+        public RelayCommand Test
         {
             get
             {
-                if (_CloseWindow == null)
+                if (_Test == null)
                 {
-                    _CloseWindow = new RelayCommand(, null);
+                    _Test = new RelayCommand(o => ActionTest(), null);
                 }
-                return _CloseWindow;
+                return _Test;
             }
         }
     }

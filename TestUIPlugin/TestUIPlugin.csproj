@@ -72,9 +72,6 @@
     <Compile Include="Views\ManageLayoutViewportView.xaml.cs">
       <DependentUpon>ManageLayoutViewportView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ManageViews\MainManageWindow.xaml.cs">
-      <DependentUpon>MainManageWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ManageViews\ManageLayoutView.xaml.cs">
       <DependentUpon>ManageLayoutView.xaml</DependentUpon>
     </Compile>
@@ -98,10 +95,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ManageLayoutViewportView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\ManageViews\MainManageWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

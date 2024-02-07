@@ -12,11 +12,11 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Window.Resources>
         <DataTemplate x:Key="MyTabHeaderTemplate">
-            <Grid>
+            <Grid >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="{Binding Header}" Width="80" Height="25" FontWeight="Bold"/>
+                <TextBlock Grid.Column="0" Text="{Binding Header}" Width="80" Height="25" FontWeight="Bold" />
             </Grid>
         </DataTemplate>
 
@@ -24,7 +24,7 @@
             <views:ManageLayoutView DataContext="{Binding VM}"/>
         </DataTemplate>
         <DataTemplate x:Key="ViewportTemplate">
-            <views:ManageViewportView DataContext="{Binding VM}"/>
+            <views:ManageViewportView DataContext="{Binding VM}" />
         </DataTemplate>
 
         <services:MyViewSelector x:Key="Selector" 
@@ -37,7 +37,8 @@
                     ItemsSource="{Binding tabs}" 
                     ItemTemplate="{StaticResource MyTabHeaderTemplate}"
                     ContentTemplateSelector="{StaticResource Selector}"
-                    SelectedIndex="{Binding ActiveTab}">
+                    SelectedIndex="{Binding ActiveTab}"
+                    >
         </TabControl>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
