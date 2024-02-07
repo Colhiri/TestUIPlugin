@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using AutoCAD_2022_Plugin1.Services;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
 
@@ -20,6 +21,33 @@ namespace AutoCAD_2022_Plugin1.ViewModels.ManageVM
             tabs = new ObservableCollection<DummyViewModel>();
             tabs.Add(new DummyViewModel("Lay", new ManageLayoutVM()));
             tabs.Add(new DummyViewModel("VP", new ManageVIewportVM()));
+        }
+
+        private string _ActiveTab;
+        public string ActiveTab
+        {
+            get 
+            {
+                return _ActiveTab; 
+            }
+            set
+            {
+                _ActiveTab = value;
+                OnPropertyChanged(nameof(EnabledForms));
+            }
+        }
+
+        private RelayCommand _CloseWindow;
+        public RelayCommand CloseWindow
+        {
+            get
+            {
+                if (_CloseWindow == null)
+                {
+                    _CloseWindow = new RelayCommand(, null);
+                }
+                return _CloseWindow;
+            }
         }
     }
 
