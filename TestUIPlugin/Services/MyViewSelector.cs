@@ -1,7 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows;
 using AutoCAD_2022_Plugin1.ViewModels.ManageVM;
-using AutoCAD_2022_Plugin1.ViewModels;
 
 namespace AutoCAD_2022_Plugin1.Services
 {

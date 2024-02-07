@@ -1,12 +1,22 @@
 ﻿using AutoCAD_2022_Plugin1.Models;
 using AutoCAD_2022_Plugin1.Services;
-using System;
 using System.Collections.ObjectModel;
 
 namespace AutoCAD_2022_Plugin1.ViewModels.ManageVM
 {
     public class ManageLayoutVM : MainVM, IMyTabContentViewModel
     {
+        public bool CheckTabEnabled
+        {
+            get
+            {
+                return EnabledFormsParamatersLayout;
+            }
+            set
+            {
+
+            }
+        }
         public ManageLayoutVM()
         {
             LayoutToDelete = new ObservableCollection<string>();
@@ -167,7 +177,11 @@ namespace AutoCAD_2022_Plugin1.ViewModels.ManageVM
         /// <summary>
         /// Убрать макета или видовой экран из списка на удаление
         /// </summary>
-        private void RemoveDelete() => _LayoutToDelete.Remove(Name);
+        private void RemoveDelete()
+        {
+            _LayoutToDelete.Remove(Name);
+            OnPropertyChanged(nameof(EnabledFormsParamatersLayout));
+        }
         private RelayCommand _CancelDeleteCommand;
         public RelayCommand CancelDeleteCommand
         {
@@ -197,6 +211,7 @@ namespace AutoCAD_2022_Plugin1.ViewModels.ManageVM
                 return _ApplyCommand;
             }
         }
+
         #endregion
     }
 }

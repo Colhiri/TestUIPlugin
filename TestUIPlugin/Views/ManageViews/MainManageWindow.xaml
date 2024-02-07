@@ -11,14 +11,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Window.Resources>
+        <DataTemplate x:Key="CustomHeader">
+            <StackPanel>
+                <TextBlock Text="{Binding Header}"/>
+            </StackPanel>
+        </DataTemplate>
         <DataTemplate x:Key="LayoutTemplate" DataType="{x:Type viewmodels:ManageLayoutVM}">
             <views:ManageLayoutView/>
         </DataTemplate>
         <DataTemplate x:Key="ViewportTemplate" DataType="{x:Type viewmodels:ManageVIewportVM}">
-            <views:ManageViewportView />
+            <views:ManageViewportView/>
         </DataTemplate>
 
-        <services:MyViewSelector x:Key="Selector" 
+        <services:MyViewSelector x:Key="Selector"
                                 LayoutTemplate="{StaticResource LayoutTemplate}" 
                                 ViewportTemplate="{StaticResource ViewportTemplate}"/>
     </Window.Resources>
@@ -27,6 +32,7 @@
         <TabControl Name="TABCONT" Margin="2" MinHeight="50" MinWidth="100" 
                     ItemsSource="{Binding tabs}"
                     ContentTemplateSelector="{StaticResource Selector}"
+                    ItemTemplate="{StaticResource CustomHeader}"
                     >
         </TabControl>
 

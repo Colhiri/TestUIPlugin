@@ -6,6 +6,18 @@ namespace AutoCAD_2022_Plugin1.ViewModels.ManageVM
 {
     public class ManageVIewportVM : MainVM, IMyTabContentViewModel
     {
+        public bool CheckTabEnabled
+        {
+            get
+            {
+                return true;
+            }
+            set
+            {
+
+            }
+        }
+
         public ManageVIewportVM()
         {
         }
