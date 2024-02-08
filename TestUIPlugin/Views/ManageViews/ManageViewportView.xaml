@@ -6,10 +6,12 @@
              xmlns:viewmodels="clr-namespace:AutoCAD_2022_Plugin1.ViewModels.ManageVM" 
              d:DataContext="{d:DesignInstance Type=viewmodels:ManageVIewportVM}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             IsEnabled="{Binding CheckTabEnabled}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"  MinWidth="150"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto" MinWidth="150"></ColumnDefinition>
                     <ColumnDefinition Width="Auto" MinWidth="150"></ColumnDefinition>
                     <ColumnDefinition Width="Auto" MinWidth="150"></ColumnDefinition>
                 </Grid.ColumnDefinitions>

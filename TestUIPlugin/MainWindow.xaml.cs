@@ -29,11 +29,6 @@ namespace TestUIPlugin
             DataContext = _Data;
         }
 
-        public void DoneCommand(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         public void CancelCommand(object sender, RoutedEventArgs e)
         {
             this.Close();

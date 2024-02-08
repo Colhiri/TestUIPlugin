@@ -1,6 +1,7 @@
 ﻿using AutoCAD_2022_Plugin1.Services;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace AutoCAD_2022_Plugin1.ViewModels.ManageVM
@@ -8,13 +9,23 @@ namespace AutoCAD_2022_Plugin1.ViewModels.ManageVM
     public class MainManageVM : MainVM
     {
         public ObservableCollection<DummyViewModel> tabs { get; set; }
-        public bool EnabledForms
+
+        private void EnabledForms()
         {
-            get
+            // Проверяем доступность первой вкладки, если она заблокирована удалением Layout,
+            // то блокируем вторую вкладку, выставляя значение доступности.
+            bool TabEnabledVP;
+            bool check = tabs.Where(x => x.Header == "Lay").Select(x => x.VM.CheckTabEnabled).First();
+            if (check == false)
             {
-                // Cast<IMyTabContentViewModel>().
-                return tabs.Where(x => x.Header == "Lay").Select(x => x.VM.CheckTabEnabled).First();
+                TabEnabledVP = false;
             }
+            else
+            {
+                TabEnabledVP = true;
+            }
+            tabs.Where(x => x.Header == "VP").Select(x => x.VM).First().CheckTabEnabled = TabEnabledVP;
+            OnPropertyChanged(nameof(IMyTabContentViewModel.CheckTabEnabled));
         }
         public MainManageVM()
         {
@@ -33,7 +44,7 @@ namespace AutoCAD_2022_Plugin1.ViewModels.ManageVM
             set
             {
                 _ActiveTab = value;
-                OnPropertyChanged(nameof(EnabledForms));
+                EnabledForms();
             }
         }
 

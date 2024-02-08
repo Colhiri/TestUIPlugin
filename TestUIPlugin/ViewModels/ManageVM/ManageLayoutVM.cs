@@ -14,7 +14,6 @@ namespace AutoCAD_2022_Plugin1.ViewModels.ManageVM
             }
             set
             {
-
             }
         }
         public ManageLayoutVM()
@@ -157,6 +156,7 @@ namespace AutoCAD_2022_Plugin1.ViewModels.ManageVM
         /// </summary>
         private void AddDelete()
         {
+            if (Name == null) return;
             _LayoutToDelete.Add(Name);
             OnPropertyChanged(nameof(EnabledFormsParamatersLayout));
         }

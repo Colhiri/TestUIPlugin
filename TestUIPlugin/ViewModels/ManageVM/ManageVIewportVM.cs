@@ -6,15 +6,16 @@ namespace AutoCAD_2022_Plugin1.ViewModels.ManageVM
 {
     public class ManageVIewportVM : MainVM, IMyTabContentViewModel
     {
+        private bool _CheckTabEnabled;
         public bool CheckTabEnabled
         {
             get
             {
-                return true;
+                return _CheckTabEnabled;
             }
             set
             {
-
+                _CheckTabEnabled = value;
             }
         }
 
